@@ -2,11 +2,11 @@ AWSTemplateFormatVersion: '2010-09-09'
 Transform: AWS::Serverless-2016-10-31
 Description: Spring Boot + GraalVM + DSQL
 Resources:
-  ServerlessWebNativeFunction:
+  SpringBootNativeDsqlFunction:
     Type: AWS::Serverless::Function
     Properties:
       MemorySize: 512
-      FunctionName: pet-store-native
+      FunctionName: aws-spring-boot-native-dsql
       Timeout: 15
       CodeUri: ./target/aws-spring-boot-native-dsql-0.0.1-SNAPSHOT-native-zip.zip
       Handler: NOP
