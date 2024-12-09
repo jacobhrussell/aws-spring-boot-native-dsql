@@ -36,14 +36,6 @@
 		</dependency>
 
 		<dependency>
-			<!-- required for Spring's ConditionalOnCheckpointRestore to work -->
-			<!-- see https://docs.spring.io/spring-framework/reference/integration/checkpoint-restore.html -->
-			<groupId>org.crac</groupId>
-			<artifactId>crac</artifactId>
-			<scope>runtime</scope>
-		</dependency>
-
-		<dependency>
 			<groupId>com.amazonaws</groupId>
 			<artifactId>aws-lambda-java-events</artifactId>
 			<version>3.14.0</version>
