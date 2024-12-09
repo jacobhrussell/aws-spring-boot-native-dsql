@@ -1,10 +1,10 @@
 package com.software.aws_spring_boot_native_dsql.repository;
 
-import com.software.aws_spring_boot_native_dsql.model.Book;
+import com.software.aws_spring_boot_native_dsql.model.entity.BookEntity;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.PagingAndSortingRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface BookRepository extends PagingAndSortingRepository<Book, String>, CrudRepository<Book, String> {
+public interface BookRepository extends PagingAndSortingRepository<BookEntity, String>, CrudRepository<BookEntity, String> {
 }
