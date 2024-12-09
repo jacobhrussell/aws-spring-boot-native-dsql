@@ -11,7 +11,7 @@ import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("book")
+@RequestMapping("/book")
 @EnableWebMvc
 @AllArgsConstructor
 public class BookController {
@@ -29,7 +29,9 @@ public class BookController {
 
     @GetMapping("/{id}")
     public ResponseEntity<Book> getBookById(@PathVariable String id) {
+        System.out.println("Getting book by ID in controller");
         Optional<Book> book = bookService.getBookById(id);
+        System.out.println("Returning book by ID in controller");
         return book.map(ResponseEntity::ok).orElse(ResponseEntity.notFound().build());
     }
 

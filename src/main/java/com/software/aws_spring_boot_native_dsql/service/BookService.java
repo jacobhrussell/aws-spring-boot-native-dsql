@@ -23,6 +23,7 @@ public class BookService {
     }
 
     public Optional<Book> getBookById(String id) {
+        System.out.println("Getting book by ID in service");
         return bookRepository.findById(id).map(Book::of);
     }
 

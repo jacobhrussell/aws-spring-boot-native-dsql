@@ -10,7 +10,10 @@ target/
 *.iml
 *.ipr
 
-## Other
+# Other
 .DS_Store
 samconfig.toml
 src/main/resources/META-INF/native-image/*.json
+
+# Local
+application-local.properties
