@@ -16,4 +16,4 @@ samconfig.toml
 src/main/resources/META-INF/native-image/*.json
 
 # Local
-application-local.properties
+src/main/resources/application-local.properties
