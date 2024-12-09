@@ -21,8 +21,8 @@ Globals:
   Api:
     EndpointConfiguration: REGIONAL
 Outputs:
-  ServerlessWebNativeApi:
+  SpringBootNativeDsqlApi:
     Description: URL for application
     Value: !Sub 'https://${ServerlessHttpApi}.execute-api.${AWS::Region}.amazonaws.com'
     Export:
-      Name: ServerlessWebNativeApi
+      Name: SpringBootNativeDsqlApi
