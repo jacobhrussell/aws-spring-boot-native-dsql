@@ -10,6 +10,7 @@ import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
+import java.util.UUID;
 
 @Service
 @AllArgsConstructor
@@ -24,7 +25,7 @@ public class BookService {
 
     public Optional<Book> getBookById(String id) {
         System.out.println("Getting book by ID in service");
-        return bookRepository.findById(id).map(Book::of);
+        return bookRepository.findById(UUID.fromString(id)).map(Book::of);
     }
 
     public Book createBook(Book book) {
@@ -34,15 +35,15 @@ public class BookService {
     }
 
     public Optional<Book> updateBook(String id, Book book) {
-        return bookRepository.findById(id).map(existing -> {
+        return bookRepository.findById(UUID.fromString(id)).map(existing -> {
             existing.setTitle(book.getTitle());
             return Book.of(bookRepository.save(existing));
         });
     }
 
     public boolean deleteBook(String id) {
-        if (bookRepository.existsById(id)) {
-            bookRepository.deleteById(id);
+        if (bookRepository.existsById(UUID.fromString(id))) {
+            bookRepository.deleteById(UUID.fromString(id));
             return true;
         }
         return false;

@@ -29,9 +29,7 @@ public class BookController {
 
     @GetMapping("/{id}")
     public ResponseEntity<Book> getBookById(@PathVariable String id) {
-        System.out.println("Getting book by ID in controller");
         Optional<Book> book = bookService.getBookById(id);
-        System.out.println("Returning book by ID in controller");
         return book.map(ResponseEntity::ok).orElse(ResponseEntity.notFound().build());
     }
 
