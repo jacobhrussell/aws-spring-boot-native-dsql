@@ -24,4 +24,4 @@ RUN ln -s /usr/lib/maven/bin/mvn /usr/bin/mvn
 VOLUME /project
 WORKDIR /project
 
-WORKDIR /pet-store-native
+WORKDIR /aws-spring-boot-native-dsql
