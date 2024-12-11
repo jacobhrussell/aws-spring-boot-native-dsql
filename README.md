@@ -1,5 +1,11 @@
 # AWS Spring Boot Native DSQL
 
+## Running Locally
+
+Start the local postgres container: `docker-compose up -d`.
+
+Run/debug as normal with your IDE.
+
 ## Deploying
 
 To run these steps in one command you can use the `deploy.sh` script:
@@ -33,11 +39,9 @@ Delete infrastructure
 sam delete
 ```
 
-## Running locally
-
-
-
 ## Endpoints
+
+If you are using IntelliJ you can use the `http` directory for initiating local requests.
 
 Create:
 
