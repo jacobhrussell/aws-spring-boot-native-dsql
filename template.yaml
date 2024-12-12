@@ -2,11 +2,22 @@ AWSTemplateFormatVersion: '2010-09-09'
 Transform: AWS::Serverless-2016-10-31
 Description: Spring Boot + GraalVM + DSQL
 Parameters:
+  Environment:
+    Type: String
   ClusterEndpoint:
     Type: String
   DbUsername:
     Type: String
 Resources:
+  SpringBootNativeDsqlApi:
+    Type: AWS::Serverless::Api
+    Properties:
+      StageName: !Ref Environment
+      Auth:
+        ApiKeyRequired: true
+        UsagePlan:
+          CreateUsagePlan: PER_API
+          UsagePlanName: SpringBootNativeDsqlUsagePlan
   SpringBootNativeDsqlFunction:
     Type: AWS::Serverless::Function
     Properties:
@@ -19,10 +30,12 @@ Resources:
       Role: !GetAtt SpringBootNativeDsqlFunctionRole.Arn
       Events:
         HttpApiEvent:
-          Type: HttpApi
+          Type: Api
           Properties:
+            RestApiId: !Ref SpringBootNativeDsqlApi
+            Path: /{proxy+}
+            Method: any
             TimeoutInMillis: 20000
-            PayloadFormatVersion: '1.0'
       Environment:
         Variables:
           CLUSTER_ENDPOINT: !Ref ClusterEndpoint
@@ -49,9 +62,3 @@ Resources:
 Globals:
   Api:
     EndpointConfiguration: REGIONAL
-Outputs:
-  SpringBootNativeDsqlApi:
-    Description: URL for application
-    Value: !Sub 'https://${ServerlessHttpApi}.execute-api.${AWS::Region}.amazonaws.com'
-    Export:
-      Name: SpringBootNativeDsqlApi
