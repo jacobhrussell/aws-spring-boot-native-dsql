@@ -2,12 +2,17 @@
 
 ## Running Locally
 
-These instructions assume you are using IntelliJ as your IDE. Set your debug profile as `local` and start the local
-postgres container with `docker-compose up -d`.
+These instructions assume you are using IntelliJ as your IDE.
+
+Set your debug profile as `local` and start the local postgres container with `docker-compose up -d`.
 
 If you want to connect to the Aurora DSQL database you will need to make sure you have your `default` AWS credentials
 set via `aws configure`. You may also need to delete the `aws_session_token` still associated with your default
-profile if it exists.
+profile if it exists. Once your credentials are set, make sure you change your profile from `local` to something else.
+It may also be helpful to create additional `application.properties` files, such as `application-dev.properties` with
+the `spring.datasource.cluster-endpoint` parameter set to the Aurora DSQL cluster endpoint you are wanting to connect
+to. Be careful, because `spring.jpa.hibernate.ddl-auto=update` will run migrations against your schema based on the JPA
+entities you have defined.
 
 You should now be able to run/debug as normal with your IDE.
 
@@ -99,3 +104,6 @@ information:
 - see all schemas: `select * from pg_namespace;`
 - see all tables: `select * from pg_tables where schemaname = 'public';`
 
+## Resources
+
+- [Amazon Aurora DSQL User Guide (PDF)](https://docs.aws.amazon.com/pdfs/aurora-dsql/latest/userguide/aurora-dsql-ug.pdf)
