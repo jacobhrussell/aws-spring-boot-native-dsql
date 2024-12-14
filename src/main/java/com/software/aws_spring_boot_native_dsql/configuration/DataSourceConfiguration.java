@@ -52,8 +52,7 @@ public class DataSourceConfiguration {
                 .credentialsProvider(DefaultCredentialsProvider.create())
                 .build();
 
-        return utilities.generateDbConnectAdminAuthToken(builder -> builder.hostname(clusterEndpoint)
-                .region(Region.US_EAST_1));
+        return utilities.generateDbConnectAdminAuthToken(
+                builder -> builder.hostname(clusterEndpoint).region(Region.US_EAST_1));
     }
-
 }

@@ -2,9 +2,14 @@
 
 ## Running Locally
 
-Start the local postgres container: `docker-compose up -d`.
+These instructions assume you are using IntelliJ as your IDE. Set your debug profile as `local` and start the local
+postgres container with `docker-compose up -d`.
 
-Run/debug as normal with your IDE.
+If you want to connect to the Aurora DSQL database you will need to make sure you have your `default` AWS credentials
+set via `aws configure`. You may also need to delete the `aws_session_token` still associated with your default
+profile if it exists.
+
+You should now be able to run/debug as normal with your IDE.
 
 ## Deploying
 
@@ -90,6 +95,7 @@ token through the console when it expires.
 
 Schema visualization does not work, so you will need to query the Postgres system tables in order to see database
 information:
+
 - see all schemas: `select * from pg_namespace;`
 - see all tables: `select * from pg_tables where schemaname = 'public';`
 
